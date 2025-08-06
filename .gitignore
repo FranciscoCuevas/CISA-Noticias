@@ -1,0 +1,76 @@
+# ==========================
+# General
+# ==========================
+*.log
+*.tmp
+*.swp
+*.bak
+*.orig
+*.env
+.env.*
+.envrc
+!*.example
+
+# IDEs y editores
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# ==========================
+# Python / FastAPI
+# ==========================
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.cache/
+pip-wheel-metadata/
+*.sqlite3
+
+# virtual environments
+venv/
+env/
+.venv/
+.env/
+
+# pytest
+.pytest_cache/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+
+# coverage
+.coverage
+htmlcov/
+
+# ==========================
+# Angular / Node.js
+# ==========================
+node_modules/
+dist/
+tmp/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.angular/
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Angular environment files (puedes cambiar según tu estructura)
+src/environments/environment*.ts
+
+# ==========================
+# Git
+# ==========================
+.git/
