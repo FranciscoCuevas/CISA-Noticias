@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { ApiService } from '../../services/api.service';
+import { ApiService } from '../services/api.service';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 export interface MediaSource {
   id: string;
@@ -9,6 +11,8 @@ export interface MediaSource {
 
 @Component({
   selector: 'app-dashboard',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
@@ -47,7 +51,6 @@ export class DashboardComponent {
     this.scrapedNews = [];
     this.currentScrapingMedia = '';
 
-    // Simular scraping para este punto 1
     this.simulateScraping(selectedMedia);
   }
 
@@ -66,7 +69,6 @@ export class DashboardComponent {
     this.mediaSources.forEach(media => media.selected = false);
   }
 
-  // Simulación para el Punto 1
   private simulateScraping(selectedMedia: MediaSource[]) {
     let currentIndex = 0;
     const totalMedia = selectedMedia.length;
@@ -76,7 +78,6 @@ export class DashboardComponent {
         const media = selectedMedia[currentIndex];
         this.currentScrapingMedia = media.name;
         
-        // Simular 5 noticias por medio
         for (let i = 1; i <= 5; i++) {
           setTimeout(() => {
             if (this.isScrapingActive) {

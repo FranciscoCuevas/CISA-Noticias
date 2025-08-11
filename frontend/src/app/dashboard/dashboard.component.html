@@ -1,0 +1,63 @@
+<div class="dashboard-container">
+
+     <div class="media-selection-card">
+        <h2>Medios de Comunicación</h2>
+        <div class="media-controls">
+            <button class="btn-secondary" (click)="selectAllMedia()">Seleccionar Todos</button>
+            <button class="btn-secondary" (click)="deselectAllMedia()">Deseleccionar Todos</button>
+        </div>
+
+        <div class="media-grid">
+            <div *ngFor="let media of mediaSources" class="media-item">
+                <label class="media-checkbox">
+                    <input
+                        type="checkbox"
+                        [(ngModel)]="media.selected"
+                        [disabled]="isScrapingActive">
+                    <span class="checkmark"></span>
+                    {{ media.name }}
+                </label>
+            </div>
+        </div>
+     </div>
+
+     <div class="scraping-controls-card">
+        <div class="control-buttons">
+            <button
+                class="btn-primary"
+                (click)="startScraping()"
+                [disabled]="isScrapingActive">
+                {{ isScrapingActive ? 'Scraping en Proceso...' : 'Iniciar Scraping' }}
+            </button>
+
+            <button
+                class="btn-danger"
+                (click)="stopScraping()"
+                [disabled]="!isScrapingActive">
+                Parar Scraping
+            </button>
+        </div>
+
+        <div *ngIf="isScrapingActive" class="progress-section">
+            <div class="progress-info">
+                <span>Scrapeando: {{ currentScrapingMedia }}</span>
+                <span>{{ scrapingProgress }}%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" [style.width.%]="scrapingProgress"></div>
+            </div>
+        </div>
+     </div>
+
+     <div class="results-card" *ngIf="scrapedNews.length > 0">
+        <h2> Noticias Scrapeadas ({{ scrapedNews.length }})</h2>
+        <div class="news-list">
+            <div *ngFor="let news of scrapedNews" class="news-item">
+                <div class="news-media">{{ news.media }}</div>
+                <div class="news-title">{{ news.title }}</div>
+                <div class="news-timestamp">{{ news.timestamp | date:'medium' }}</div>
+            </div>
+        </div>
+     </div>
+
+</div>
